@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -18,4 +15,4 @@ def signup(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'account/signup.html', {'form': form})
