@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} 
+{% block content %}
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>News</title>
+  </head>
+
+<body>
+    <h5 class="title" id="articlestitle">Articles</h5>
+    <div>
+    {% for article in articles.all%}
+        <div>
+            Title
+            <div>{{ article.article_title }}</div>
+            Text
+            <div>{{ article.article_text }}</div>
+            Date
+            <div>{{ article.date_published }}</div>
+        </div>
+    {% endfor %}
+    </div>
+    <div>
+        <h5 class="title" id="articlestitle">Category</h5>            
+        {% for category in categories.all%}
+                <div>{{ category.name }}</div>
+                <div>
+                    {% for objs_article in category.articles.all %}
+                        <p>{{ objs_article.article_title }}</p>
+                    {% endfor %}
+                </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %} 

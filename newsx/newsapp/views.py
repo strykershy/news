@@ -2,6 +2,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from .models import Article, Category
 
 def signup(request):
     if request.method == 'POST':
@@ -15,4 +16,13 @@ def signup(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'account/signup.html', {'form': form})
+    return render(request, 'newsapp/signup.html', {'form': form})
+
+
+
+def home(request):
+
+    return render(request, 'newsapp/index.html', {
+        'articles': Article.objects.all(),
+        'categories': Category.objects.all(),
+    })
